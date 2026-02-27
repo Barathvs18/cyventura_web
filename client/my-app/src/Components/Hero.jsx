@@ -1,0 +1,110 @@
+import { useEffect, useState, useRef } from 'react';
+
+export default function Hero() {
+    const [typed, setTyped] = useState('');
+    const words = ['Innovate.', 'Explore.', 'Connect.', 'Lead.'];
+    const wordIdx = useRef(0);
+    const charIdx = useRef(0);
+    const deleting = useRef(false);
+
+    useEffect(() => {
+        const tick = () => {
+            const word = words[wordIdx.current];
+            if (!deleting.current) {
+                charIdx.current++;
+                setTyped(word.slice(0, charIdx.current));
+                if (charIdx.current === word.length) {
+                    deleting.current = true;
+                    setTimeout(tick, 1400);
+                    return;
+                }
+            } else {
+                charIdx.current--;
+                setTyped(word.slice(0, charIdx.current));
+                if (charIdx.current === 0) {
+                    deleting.current = false;
+                    wordIdx.current = (wordIdx.current + 1) % words.length;
+                }
+            }
+            setTimeout(tick, deleting.current ? 55 : 90);
+        };
+        const t = setTimeout(tick, 300);
+        return () => clearTimeout(t);
+    }, []);
+
+    return (
+        <section
+            id="home"
+            className="relative min-h-screen flex items-center justify-center overflow-hidden hero-grid-bg"
+            style={{ background: 'var(--black)' }}
+        >
+            {/* Noise + scan */}
+            <div className="noise-overlay" />
+            <div className="scan-line" />
+
+            {/* Radial glow */}
+            <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                    background:
+                        'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(232,0,13,0.12) 0%, transparent 65%)',
+                }}
+            />
+
+            <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+
+                {/* Floating decorative rings */}
+                <div className="absolute top-24 right-16 w-56 h-56 rounded-full border border-[var(--red)] opacity-10 anim-spin-slow" />
+                <div className="absolute bottom-24 left-16 w-32 h-32 rounded-full border border-[var(--gray-700)] opacity-20 anim-float" />
+                <div
+                    className="absolute top-40 left-1/4 w-4 h-4 rounded-full anim-float delay-300"
+                    style={{ background: 'var(--red)', boxShadow: '0 0 16px var(--red)', opacity: 0.7 }}
+                />
+
+                {/* Content */}
+                <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
+
+                    <p className="section-eyebrow mb-5 anim-fade-up">
+                        Welcome to Cyventura
+                    </p>
+
+                    <h1
+                        className="font-extrabold leading-none mb-6 anim-fade-up delay-200"
+                        style={{ fontSize: 'clamp(3rem, 8vw, 6rem)' }}
+                    >
+                        <span style={{ color: 'var(--white)' }}>We </span>
+                        <span style={{ color: 'var(--red)', textShadow: '0 0 30px rgba(232,0,13,0.5)' }}>
+                            {typed}
+                        </span>
+                        <span
+                            className="inline-block w-[3px] h-[0.85em] ml-1 align-middle"
+                            style={{ background: 'var(--red)', animation: 'blink 0.9s step-end infinite' }}
+                        />
+                    </h1>
+
+                    <p
+                        className="text-[var(--gray-300)] max-w-xl mx-auto leading-relaxed mb-10 anim-fade-up delay-400"
+                        style={{ fontSize: 'clamp(1rem, 2.5vw, 1.2rem)' }}
+                    >
+                        The hub for curious minds — where technology meets ambition. Join a community that
+                        builds, breaks, and transforms the future.
+                    </p>
+                    <button class="bg-black text-white font-semibold px-16 py-6 rounded-xl border-2 border-red-600 hover:bg-red-600 hover:text-white transition duration-300 shadow-lg">
+                        Create Account
+                    </button>
+                </div>
+            </div>
+
+            {/* Scroll indicator */}
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 anim-fade-in delay-800">
+
+                <div className="w-[1px] h-10 relative overflow-hidden" style={{ background: 'var(--gray-700)' }}>
+                    <div
+                        className="absolute top-0 left-0 w-full h-1/2"
+                        style={{ background: 'var(--red)', animation: 'scan-line 1.5s linear infinite' }}
+                    />
+                </div>
+            </div>
+        </section>
+    );
+}
