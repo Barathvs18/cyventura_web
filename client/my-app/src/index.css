@@ -294,6 +294,7 @@ body {
     cursor: pointer;
     overflow: hidden;
     transition: transform 0.2s, box-shadow 0.3s;
+    padding: 10px 20px;
 }
 
 .btn-glow::before {

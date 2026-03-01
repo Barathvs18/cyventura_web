@@ -1,6 +1,8 @@
 import { useEffect, useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Hero() {
+    const navigate = useNavigate();
     const [typed, setTyped] = useState('');
     const words = ['Innovate.', 'Explore.', 'Connect.', 'Lead.'];
     const wordIdx = useRef(0);
@@ -38,9 +40,8 @@ export default function Hero() {
             className="relative min-h-screen flex items-center justify-center overflow-hidden hero-grid-bg"
             style={{ background: 'var(--black)' }}
         >
-            {/* Noise + scan */}
+            {/* Noise */}
             <div className="noise-overlay" />
-            <div className="scan-line" />
 
             {/* Radial glow */}
             <div
@@ -89,7 +90,10 @@ export default function Hero() {
                         The hub for curious minds — where technology meets ambition. Join a community that
                         builds, breaks, and transforms the future.
                     </p>
-                    <button class="bg-black text-white font-semibold px-16 py-6 rounded-xl border-2 border-red-600 hover:bg-red-600 hover:text-white transition duration-300 shadow-lg">
+                    <button
+                        onClick={() => navigate('/auth', { state: { isRegister: true } })}
+                        className="bg-transparent text-white font-bold px-20 py-6 rounded-full border-[3px] border-[var(--red)] hover:bg-[var(--red)] hover:shadow-[0_0_30px_var(--red-glow)] transition-all duration-300 cursor-pointer text-xl tracking-widest uppercase"
+                    >
                         Create Account
                     </button>
                 </div>
