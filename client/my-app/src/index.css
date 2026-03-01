@@ -2,9 +2,9 @@
 
 /* ─── CUSTOM PROPERTIES ─────────────────────────────────────── */
 :root {
-    --red: #e8000d;
-    --red-dark: #a80009;
-    --red-glow: rgba(232, 0, 13, 0.35);
+    --red: #00a8ff;
+    --red-dark: #0077b6;
+    --red-glow: rgba(0, 168, 255, 0.35);
     --black: #000000;
     --gray-900: #0d0d0d;
     --gray-800: #1a1a1a;
@@ -264,8 +264,8 @@ body {
 /* ─── HERO GRID BG ───────────────────────────────────────────── */
 .hero-grid-bg {
     background-image:
-        linear-gradient(rgba(232, 0, 13, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(232, 0, 13, 0.05) 1px, transparent 1px);
+        linear-gradient(rgba(0, 168, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 168, 255, 0.05) 1px, transparent 1px);
     background-size: 40px 40px;
     animation: grid-move 4s linear infinite;
 }
@@ -393,7 +393,7 @@ body {
 
 .input-dark:focus {
     border-color: var(--red);
-    box-shadow: 0 0 10px rgba(232, 0, 13, 0.2);
+    box-shadow: 0 0 10px rgba(0, 168, 255, 0.2);
 }
 
 /* ─── NOISE OVERLAY ──────────────────────────────────────────── */

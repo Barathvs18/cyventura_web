@@ -158,7 +158,7 @@ export default function Dashboard() {
             <div className="noise-overlay" />
             <div
                 className="absolute inset-0 pointer-events-none"
-                style={{ background: 'radial-gradient(ellipse 50% 60% at 50% 50%, rgba(232,0,13,0.07) 0%, transparent 65%)' }}
+                style={{ background: 'radial-gradient(ellipse 50% 60% at 50% 50%, rgba(0,168,255,0.07) 0%, transparent 65%)' }}
             />
 
             <div className="max-w-3xl mx-auto relative z-10 pt-16">
@@ -197,7 +197,7 @@ export default function Dashboard() {
                             </div>
 
                             <div className="flex items-center gap-8 mb-8">
-                                <div className="w-24 h-24 rounded-full bg-[var(--gray-800)] overflow-hidden border-2 border-[var(--gray-700)] shadow-[0_0_15px_rgba(232,0,13,0.1)]">
+                                <div className="w-24 h-24 rounded-full bg-[var(--gray-800)] overflow-hidden border-2 border-[var(--gray-700)] shadow-[0_0_15px_rgba(0,168,255,0.1)]">
                                     {user?.profile_picture ? (
                                         <img src={user.profile_picture} alt="Profile" className="w-full h-full object-cover" />
                                     ) : (

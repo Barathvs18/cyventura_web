@@ -65,8 +65,8 @@ export default function Contact() {
                                     <div
                                         className="w-10 h-10 rounded-md flex items-center justify-center shrink-0"
                                         style={{
-                                            background: 'rgba(232,0,13,0.1)',
-                                            border: '1px solid rgba(232,0,13,0.3)',
+                                            background: 'rgba(0,168,255,0.1)',
+                                            border: '1px solid rgba(0,168,255,0.3)',
                                         }}
                                     >
                                         {icon}
@@ -101,12 +101,12 @@ export default function Contact() {
                         {sent ? (
                             <div
                                 className="card-dark rounded-lg p-10 text-center"
-                                style={{ border: '1px solid rgba(232,0,13,0.4)' }}
+                                style={{ border: '1px solid rgba(0,168,255,0.4)' }}
                             >
                                 <div
                                     className="w-16 h-16 rounded-full mx-auto mb-5 flex items-center justify-center text-2xl"
                                     style={{
-                                        background: 'rgba(232,0,13,0.1)',
+                                        background: 'rgba(0,168,255,0.1)',
                                         border: '2px solid var(--red)',
                                     }}
                                 >
