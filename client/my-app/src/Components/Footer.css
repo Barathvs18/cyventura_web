@@ -1,0 +1,116 @@
+.footer-container {
+    background: rgba(15, 10, 10, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 26, 26, 0.4);
+    color: #e2e8f0;
+    padding: 60px 40px 20px 40px;
+    font-family: 'Consolas', 'Fira Code', 'Courier New', monospace;
+    width: 100%;
+    margin-top: 100px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1600px;
+    margin: 0 auto;
+    gap: 40px;
+    border-left: 3px solid #ff1a1a;
+    border-right: 3px solid #ff1a1a;
+    padding: 0 40px; /* Gives inward spacing from the lines */
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    max-width: 450px;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.footer-logo {
+    width: 55px;
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(255, 26, 26, 0.5));
+}
+
+.footer-text-logo {
+    height: 35px;
+    width: auto;
+}
+
+.footer-tagline {
+    color: #8b949e;
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* right side corner alignment */
+    text-align: right;
+}
+
+.footer-nav-title {
+    font-family: 'Oswald', sans-serif;
+    color: #ffffff;
+    font-size: 22px;
+    margin: 0 0 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.footer-nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-nav-links a {
+    color: #58a6ff;
+    text-decoration: none;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.footer-nav-links a:hover {
+    color: #ff1a1a;
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    max-width: 1600px;
+    margin: 40px auto 0 auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    color: #7d8590;
+    font-size: 13px;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .footer-right {
+        align-items: flex-start;
+        text-align: left;
+        margin-top: 40px;
+    }
+}

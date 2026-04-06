@@ -1,11 +1,14 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Six+Caps&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alike+Angular&family=Unica+One&display=swap');
 
 /* ─── CUSTOM PROPERTIES ─────────────────────────────────────── */
+
 :root {
-    --red: #00a8ff;
-    --red-dark: #0077b6;
-    --red-glow: rgba(0, 168, 255, 0.35);
-    --black: #000000;
+    --red: #ff1a1a;
+    --red-dark: #cc0000;
+    --red-glow: rgba(255, 26, 26, 0.35);
+    --blue: #ffffff; /* Re-mapped to white for strict palette */
+    --black: #050505;
     --gray-900: #0d0d0d;
     --gray-800: #1a1a1a;
     --gray-700: #2a2a2a;
@@ -29,7 +32,7 @@ html {
 
 body {
     font-family: 'Inter', 'Segoe UI', sans-serif;
-    background: var(--black);
+    background: radial-gradient(circle at center, #1c0000 0%, #050505 100%) fixed;
     color: var(--white);
     overflow-x: hidden;
 }
@@ -44,7 +47,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--red);
+    background: #444; /* Neutral grey instead of red */
     border-radius: 3px;
 }
 
@@ -264,24 +267,13 @@ body {
 /* ─── HERO GRID BG ───────────────────────────────────────────── */
 .hero-grid-bg {
     background-image:
-        linear-gradient(rgba(0, 168, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 168, 255, 0.05) 1px, transparent 1px);
+        linear-gradient(rgba(255, 26, 26, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
     background-size: 40px 40px;
     animation: grid-move 4s linear infinite;
 }
 
-/* ─── SCAN LINE ──────────────────────────────────────────────── */
-.scan-line {
-    pointer-events: none;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--red), transparent);
-    animation: scan-line 4s linear infinite;
-    opacity: 0.3;
-}
+
 
 /* ─── GLOW BUTTON ────────────────────────────────────────────── */
 .btn-glow {
@@ -393,7 +385,7 @@ body {
 
 .input-dark:focus {
     border-color: var(--red);
-    box-shadow: 0 0 10px rgba(0, 168, 255, 0.2);
+    box-shadow: 0 0 10px var(--red-glow);
 }
 
 /* ─── NOISE OVERLAY ──────────────────────────────────────────── */

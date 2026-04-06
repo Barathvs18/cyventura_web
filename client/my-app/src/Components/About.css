@@ -1,0 +1,286 @@
+.about-container {
+    width: 100%;
+    max-width: 1600px; /* Increased from 1200px */
+    margin: 0 auto;
+    padding: 60px 40px; /* Increased padding */
+    font-family: Arial, sans-serif;
+}
+
+.defcon-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px; /* Increased gap */
+    width: 100%;
+}
+
+.defcon-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: rgba(15, 10, 10, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 26, 26, 0.4);
+    border-left: 1px solid rgba(255, 255, 255, 0.05); /* keep subtle side borders */
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 40px 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    color: #e2e8f0;
+}
+
+.defcon-inner {
+    position: relative;
+    z-index: 2;
+}
+
+.defcon-title {
+    font-size: 32px; /* Increased from 24px */
+    font-weight: bold;
+    color: #e2e8f0;
+    text-transform: uppercase;
+    margin: 0 0 15px 0;
+    font-family: 'Oswald', 'Impact', sans-serif;
+    letter-spacing: 1.5px;
+}
+
+.defcon-subtitle {
+    font-size: 15px; /* Increased from 11px */
+    color: #8b949e;
+    margin: 0 0 20px 0;
+    line-height: 1.4;
+}
+
+/* Links color specifically for DEFCON style */
+.defcon-links {
+    margin-bottom: 20px;
+}
+
+.defcon-links a {
+    display: block;
+    color: #58a6ff;
+    font-size: 15px; /* Increased from 11px */
+    text-decoration: none;
+    margin-bottom: 8px;
+    transition: color 0.2s ease;
+}
+
+.defcon-links a:hover {
+    color: #79c0ff;
+    text-decoration: underline;
+}
+
+.defcon-content {
+    font-size: 14px; /* Increased from 11px */
+    color: #7d8590;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.defcon-content p {
+    margin: 0 0 15px 0;
+}
+
+.defcon-content p:last-child {
+    margin: 0;
+}
+
+/* Responsive adjustments for top row */
+@media (max-width: 900px) {
+    .defcon-row {
+        flex-direction: column;
+        align-items: center;
+    }
+    .defcon-box {
+        width: 100%;
+        max-width: 500px; /* Increased from 400px */
+    }
+}
+
+/* MAIN 3-COLUMN LAYOUT */
+.defcon-main-grid {
+    display: flex;
+    flex-direction: row;
+    gap: 30px; /* Increased from 20px */
+    margin-top: 30px; /* Increased from 20px */
+    align-items: flex-start;
+}
+
+.defcon-col-left {
+    flex: 0 0 24%; /* Enlarged ratio slightly */
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.defcon-col-center {
+    flex: 1;
+}
+
+.defcon-col-right {
+    flex: 0 0 30%; /* Enlarged ratio */
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* WIDGETS */
+.defcon-widget, .defcon-post {
+    background: rgba(15, 10, 10, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 26, 26, 0.4);
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    overflow: hidden;
+    color: #e2e8f0;
+}
+
+.widget-title {
+    background: #000000;
+    color: #e2e8f0;
+    margin: 0;
+    padding: 15px 20px; /* Increased padding */
+    font-size: 20px; /* Increased from 16px */
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.widget-item {
+    padding: 20px; /* Increased */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.widget-item.borderless {
+    border-bottom: none;
+}
+
+.widget-item strong {
+    display: block;
+    color: #58a6ff;
+    font-size: 16px; /* Increased from 13px */
+    margin-bottom: 8px;
+}
+
+.widget-item p {
+    margin: 0 0 8px 0;
+    color: #8b949e;
+    font-size: 14px; /* Increased from 11px */
+}
+
+.widget-item a {
+    color: #58a6ff;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+/* POSTS */
+.defcon-post {
+    margin-bottom: 30px;
+}
+
+.post-title {
+    color: #a3b3cc;
+    margin: 0;
+    padding: 20px 25px; /* Increased padding */
+    font-size: 28px; /* Increased from 22px */
+    font-weight: normal;
+    font-family: 'Oswald', sans-serif;
+    background: #000000;
+}
+
+.post-meta {
+    background: rgba(255, 255, 255, 0.1);
+    color: #8b949e;
+    padding: 5px 25px; /* Increased padding */
+    font-size: 12px; /* Increased */
+    text-transform: uppercase;
+}
+
+.post-body {
+    padding: 30px; /* Increased */
+    color: #8b949e;
+    font-size: 16px; /* Increased from 12px */
+    line-height: 1.7;
+}
+
+.post-body p {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.post-body a {
+    color: #58a6ff;
+    text-decoration: none;
+}
+
+/* AGENDA */
+.agenda-item {
+    display: flex;
+    flex-direction: row;
+    padding: 20px; /* Increased */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    align-items: flex-start;
+}
+
+.agenda-item.borderless {
+    border-bottom: none;
+}
+
+.agenda-date {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    width: 44px; /* Increased from 32px */
+    text-align: center;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.agenda-day {
+    background: white;
+    color: black;
+    font-weight: bold;
+    font-size: 22px; /* Increased from 16px */
+    padding: 6px 0;
+}
+
+.agenda-month {
+    background: #238636;
+    color: white;
+    font-size: 13px; /* Increased from 10px */
+    font-weight: bold;
+    padding: 4px 0;
+}
+
+.agenda-info a {
+    display: block;
+    color: #58a6ff;
+    font-size: 16px; /* Increased from 13px */
+    text-decoration: none;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.agenda-info p {
+    margin: 0;
+    color: #8b949e;
+    font-size: 14px; /* Increased from 11px */
+}
+
+@media (max-width: 1100px) {
+    .defcon-main-grid {
+        flex-direction: column;
+    }
+}

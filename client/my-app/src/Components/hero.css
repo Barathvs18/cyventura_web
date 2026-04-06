@@ -1,0 +1,179 @@
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: white;
+    padding: 40px;
+    overflow: hidden;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* font */
+
+
+.hero-model-container {
+    margin-top: 100px;
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* Optional glow effect directly behind the 3D model container */
+    filter: drop-shadow(0 0 20px rgba(147, 192, 147, 0.2));
+}
+
+.hero-text-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    max-width: 500px;
+}
+
+/* Gradient glow effect behind the model */
+.hero-model-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-size: 200% 200%;
+    filter: blur(100px);
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0.3;
+    pointer-events: none;
+ 
+}
+
+@keyframes gradientGlow {
+    0% {
+        background-position: 0% 50%;
+        opacity: 0.2;
+    }
+
+    50% {
+        background-position: 100% 50%;
+        opacity: 0.5;
+    }
+
+    100% {
+        background-position: 0% 50%;
+        opacity: 0.2;
+    }
+}
+
+/* Remove old logo styles that are no longer used */
+
+/* Title */
+
+.hero-title {
+    font-size: 64px;
+    line-height: 1.1;
+    font-weight: 700;
+    font-family: 'Playfair Display', 'Merriweather', Georgia, serif;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    color: white;
+    text-shadow: 2px 0px 0px rgba(255, 26, 26, 0.7), -2px 0px 0px rgba(145, 189, 189, 0.7);
+}
+
+/* Subtitle */
+
+.hero-subtitle {
+    font-size: 16px;
+    color: #ce9178; /* Muted bronze/orange string literal color */
+    font-family: 'Fira Code', 'Consolas', 'Courier New', monospace;
+    margin-bottom: 40px;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+}
+
+/* Button */
+
+.hero-btn {
+    padding: 14px 36px;
+
+    border-radius: 30px;
+
+    /* Gradient Border Technique */
+    border: 2px solid transparent;
+    background:
+        linear-gradient(#050505, #050505) padding-box,
+        /* Inner background (matches body) */
+        linear-gradient(90deg, #ff1a1a, #ffffff) border-box;
+    /* Gradient border */
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.hero-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 26, 26, 0.3);
+}
+
+/* Hero Stats Container */
+.hero-stats {
+    display: inline-flex;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    margin-bottom: 40px;
+    background: rgba(10, 10, 10, 0.4);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+.hero-stat-item {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.hero-stat-item:last-child {
+    border-right: none;
+}
+
+.hero-stat-number {
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 6px;
+    /* Chromatic aberration effect to match cyber aesthetic */
+    text-shadow: 2px 0px 0px rgba(255, 26, 26, 0.6), -2px 0px 0px rgba(0, 255, 255, 0.6);
+}
+
+.text-red {
+    color: #ff1a1a;
+    text-shadow: none; /* remove glitch for pure red accents */
+}
+
+.hero-stat-label {
+    font-size: 11px;
+    color: #8c8c9a;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.4;
+}

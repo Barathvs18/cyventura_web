@@ -1,22 +1,24 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from "react-router-dom"
+import Home from "./Pages/Home"
+import LoginHero from "./Components/Login"
+import Navbar from "./Components/Navbar"
+import Dashboard from "./Pages/Dashboard"
 
-import Navbar from './Components/Navbar';
-import Footer from './Components/Footer';
-import Home from './Pages/Home';
-import AuthPage from './Pages/AuthPage';
-import Dashboard from './Pages/Dashboard';
+function App() {
+  const location = useLocation();
 
-/* ─── App Root ───────────────────────────────────────────────── */
-export default function App() {
   return (
-    <>
-      <Navbar />
+    <div>
+      {location.pathname !== "/dashboard" && location.pathname !== "/login" && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/auth" element={<AuthPage />} />
+        <Route path="/login" element={<LoginHero />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
-      <Footer />
-    </>
-  );
+
+      {/* Show navbar universally, except on the dashboard and login pages */}
+    </div>
+  )
 }
+
+export default App

@@ -1,0 +1,73 @@
+/* Container styling */
+.scroll-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  background: transparent;
+}
+
+.scroll-header {
+  max-width: 1700px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Card Wrapper with Perspective */
+.scroll-card-wrapper {
+  width: 100%;
+  max-width: 1700px;
+  perspective: 1000px; /* Crucial for 3D effect */
+}
+
+.scroll-card {
+  width: 100%;
+  /* Glass Prism Effect */
+  background: rgba(20, 20, 20, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 26, 26, 0.05);
+  transition: transform 0.1s ease-out; /* Smooths out scroll increments */
+  will-change: transform;
+}
+
+.scroll-card-inner {
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.65);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Typography matching the link */
+.title {
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.title-bold {
+  font-weight: 700;
+  font-size: 4.5rem;
+}
+
+@media (max-width: 768px) {
+  .title { font-size: 2rem; }
+  .title-bold { font-size: 3rem; }
+}
