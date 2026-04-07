@@ -1,10 +1,36 @@
-import React, { Suspense } from "react"
+import React, { Suspense, useState } from "react"
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion"
 import { useNavigate } from "react-router-dom"
 import { Canvas } from "@react-three/fiber"
 import { OrbitControls, useGLTF, Environment, Float, ContactShadows } from "@react-three/drei"
 import laptopModel from "../assets/cyberpunk_laptop.glb"
 import "./hero.css"
+
+function SubtleButton({ onClick, text = "Get Started" }) {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isPressed, setIsPressed] = useState(false);
+
+  return (
+    <button 
+      className="subtle-btn-group"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        setIsPressed(false);
+      }}
+      onMouseDown={() => setIsPressed(true)}
+      onMouseUp={() => setIsPressed(false)}
+      onClick={onClick}
+    >
+      <div className="subtle-btn-glow"></div>
+      <span className="subtle-btn-text">{text}</span>
+      <span className={`subtle-btn-dot ${isHovered ? 'hovered' : ''} ${isPressed ? 'pressed' : ''}`}>
+        <div className="subtle-btn-ripple"></div>
+      </span>
+      <div className="subtle-btn-border-anim"></div>
+    </button>
+  );
+}
 
 function LaptopModel() {
     const { scene } = useGLTF(laptopModel);
@@ -80,9 +106,8 @@ export default function Hero() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
                     >
-                        Organizing <span className="text-red">Real&ndash;</span>
-                        <span className="text-red">World</span><br/>
-                        Cybersecurity<br/>
+                        Organizing <span className="text-red">Real&ndash;</span><span className="text-red">World</span><br /> 
+                        Cybersecurity
                         <span className="text-red">Experiences</span>
                     </motion.h1>
 
@@ -102,7 +127,7 @@ export default function Hero() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
                     >
-                        <div className="hero-stat-item">
+                        {/* <div className="hero-stat-item">
                             <span className="hero-stat-number">500<span className="text-red">+</span></span>
                             <span className="hero-stat-label">Members</span>
                         </div>
@@ -117,20 +142,19 @@ export default function Hero() {
                         <div className="hero-stat-item">
                             <span className="hero-stat-number">#1</span>
                             <span className="hero-stat-label">Ranked<br/>Club</span>
-                        </div>
+                        </div> */}
                     </motion.div>
 
-                    <motion.button
-                        className="hero-btn"
-                        onClick={() => navigate('/login')}
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
                     >
-                        Log in
-                    </motion.button>
+                        <SubtleButton 
+                            onClick={() => navigate('/login')} 
+                            text="Log in" 
+                        />
+                    </motion.div>
                 </div>
             </div>
         </section>

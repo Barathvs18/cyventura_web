@@ -3,7 +3,7 @@
     max-width: 1600px; /* Increased from 1200px */
     margin: 0 auto;
     padding: 60px 40px; /* Increased padding */
-    font-family: Arial, sans-serif;
+
 }
 
 .defcon-row {
@@ -43,7 +43,7 @@
     color: #e2e8f0;
     text-transform: uppercase;
     margin: 0 0 15px 0;
-    font-family: 'Oswald', 'Impact', sans-serif;
+
     letter-spacing: 1.5px;
 }
 
@@ -147,7 +147,7 @@
     margin: 0;
     padding: 15px 20px; /* Increased padding */
     font-size: 20px; /* Increased from 16px */
-    font-family: 'Oswald', sans-serif;
+
     letter-spacing: 1px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -195,7 +195,7 @@
     padding: 20px 25px; /* Increased padding */
     font-size: 28px; /* Increased from 22px */
     font-weight: normal;
-    font-family: 'Oswald', sans-serif;
+
     background: #000000;
 }
 

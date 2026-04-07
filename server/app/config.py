@@ -4,20 +4,21 @@ Reads all values from environment variables / .env file.
 """
 from pydantic_settings import BaseSettings
 from functools import lru_cache
+from typing import Optional
 
 
 class Settings(BaseSettings):
     # App
-    APP_NAME: str = "Cyventura API"
-    APP_VERSION: str = "1.0.0"
+    APP_NAME: str = "Cyventura CTF Platform"
+    APP_VERSION: str = "2.0.0"
     DEBUG: bool = False
 
-    # MongoDB
-    MONGODB_URI: str
-    DATABASE_NAME: str = "cyventura"
+    # MongoDB – defaults to local so the app starts even without .env
+    MONGODB_URI: str = "mongodb://localhost:27017"
+    DATABASE_NAME: str = "cyventura_ctf"
 
-    # JWT
-    JWT_SECRET_KEY: str
+    # JWT – must be set in .env for production
+    JWT_SECRET_KEY: str = "CHANGE_ME_IN_PRODUCTION_USE_STRONG_SECRET"
     JWT_ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24  # 24 hours
 

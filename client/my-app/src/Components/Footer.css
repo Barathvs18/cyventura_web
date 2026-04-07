@@ -5,7 +5,7 @@
     border-top: 1px solid rgba(255, 26, 26, 0.4);
     color: #e2e8f0;
     padding: 60px 40px 20px 40px;
-    font-family: 'Consolas', 'Fira Code', 'Courier New', monospace;
+
     width: 100%;
     margin-top: 100px;
 }
@@ -62,7 +62,7 @@
 }
 
 .footer-nav-title {
-    font-family: 'Oswald', sans-serif;
+
     color: #ffffff;
     font-size: 22px;
     margin: 0 0 20px 0;

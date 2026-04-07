@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Six+Caps&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Alike+Angular&family=Unica+One&display=swap');
 
@@ -26,15 +27,29 @@
     padding: 0;
 }
 
+button, input, select, textarea {
+    font-family: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+}
+
 html {
     scroll-behavior: smooth;
 }
 
 body {
     font-family: 'Inter', 'Segoe UI', sans-serif;
-    background: radial-gradient(circle at center, #1c0000 0%, #050505 100%) fixed;
+    background: radial-gradient(circle at top center, #111111 0%, #050505 100%) fixed;
     color: var(--white);
     overflow-x: hidden;
+}
+
+/* ─── TYPOGRAPHY ─────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Unica One', sans-serif;
+    letter-spacing: 1.5px;
+    font-weight: 400;
+    text-transform: uppercase;
 }
 
 /* ─── SCROLLBAR ──────────────────────────────────────────────── */

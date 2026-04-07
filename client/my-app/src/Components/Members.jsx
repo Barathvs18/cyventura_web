@@ -39,6 +39,17 @@ export const AnimatedTestimonials = ({
 
     return (
         <div className={`at-wrapper ${className}`}>
+            <hr
+  style={{
+    width: "calc(100% - 40px)",
+    maxWidth: "1520px",
+    height: "2px",
+    backgroundColor: "#f8f3f3ff",
+    border: "none",
+    marginBottom: "30px",
+    opacity:"0.1"
+  }}
+/>
             <div className="dossier-header text-center">
                 <span className="dossier-eyebrow">O P E R A T O R &nbsp; D O S S I E R</span>
                 <h2 className="dossier-main-title">Meet the <span className="text-red">Team</span></h2>

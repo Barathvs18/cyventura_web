@@ -16,8 +16,8 @@ const BentoGridItem = ({ title, description, header, icon, className }) => {
       <div className="bento-header-wrapper">{header}</div>
       <div className="bento-content">
         <div className="bento-icon">{icon}</div>
-        <div className="bento-title">{title}</div>
-        <div className="bento-description">{description}</div>
+        <h2 className="bento-title">{title}</h2>
+        <p className="bento-description">{description}</p>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import React from 'react';
 import './About.css';
+import { div } from 'three/src/nodes/math/OperatorNode.js';
 
 const features = [
   {
@@ -32,6 +33,16 @@ const features = [
 export const AboutFeatures = () => {
   return (
     <div className="about-container">
+    <hr
+  style={{
+    width: "100%",
+    height: "2px",
+    backgroundColor: "#f8f3f3ff",
+    border: "none",
+    marginBottom: "30px",
+    opacity:"0.1"
+  }}
+/>
       <div className="dossier-header text-center">
     <span className="dossier-eyebrow">C L U B &nbsp; O V E R V I E W</span>
     <h2 className="dossier-main-title">About Our <span className="text-red">Organization </span></h2>
@@ -44,14 +55,14 @@ export const AboutFeatures = () => {
                  <h3 className="defcon-title">{item.title}</h3>
                  <p className="defcon-subtitle">{item.subtitle}</p>
                  {item.links && (
-                     <div className="defcon-links">
+                   <div className="defcon-links">
                         {item.links.map((link, i) => <a key={i} href="#">{link}</a>)}
                      </div>
                  )}
                  {item.content && (
                      <div className="defcon-content">
                          {item.content.split('\n\n').map((paragraph, i) => (
-                             <p key={i}>{paragraph}</p>
+                           <p key={i}>{paragraph}</p>
                          ))}
                      </div>
                  )}
@@ -146,5 +157,6 @@ export const AboutFeatures = () => {
     </div>
   );
 };
+
 
 export default AboutFeatures;

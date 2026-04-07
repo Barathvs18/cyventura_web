@@ -1,0 +1,161 @@
+.no-challenge {
+  background: rgba(10, 10, 10, 0.65);
+  backdrop-filter: blur(16px);
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  color: #94a3b8;
+  border: 1px solid rgba(255,255,255,0.1);
+  font-size: 1.1rem;
+}
+
+.loading-state {
+  text-align: center;
+  color: #94a3b8;
+  padding: 60px;
+  font-size: 1.1rem;
+}
+
+.challenge-card {
+
+  background: rgba(10, 10, 10, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(236, 234, 234, 0.15);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 26, 26, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.challenge-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 15px;
+}
+
+.challenge-title {
+  font-size: 1.6rem;
+  margin: 0;
+  color: #fff;
+  font-family: 'Unica One', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(255, 26, 26, 0.3);
+}
+
+.challenge-points {
+  background: rgba(160, 2, 2, 0.15);
+  color: #eee9e9;
+  border: 1px solid #ff1a1a;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  font-family: 'Unica One', sans-serif;
+  letter-spacing: 1px;
+}
+
+.challenge-desc {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+}
+
+.download-btn {
+  display: inline-block;
+   background: rgba(255, 26, 26, 0.15);
+  color: #f5f1f1;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-family: 'Unica One', sans-serif;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+  border: 1px solid #ff1a1a;
+}
+
+.download-btn:hover {
+  background: rgba(255, 26, 26, 0.15);
+  box-shadow: 0 0 15px rgba(255, 26, 26, 0.4);
+}
+
+.flag-submit-container {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.flag-input-group {
+  display: flex;
+  gap: 10px;
+}
+
+.flag-input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.flag-input:focus {
+  border-color: #ff1a1a;
+  box-shadow: 0 0 10px rgba(255, 26, 26, 0.35);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.submit-btn {
+  padding: 12px 24px;
+  background: #cc0000;
+  color: white;
+  border: 1px solid #ff1a1a;
+  border-radius: 8px;
+  font-weight: 600;
+  font-family: 'Unica One', sans-serif;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: #cc0000;
+  box-shadow: 0 0 15px rgba(255, 26, 26, 0.5);
+  transform: translateY(-2px);
+}
+
+.submit-result {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.submit-result.success {
+  background: rgba(5, 150, 105, 0.2);
+  color: #10b981;
+  border: 1px solid #059669;
+}
+
+.submit-result.error {
+  background: rgba(225, 29, 72, 0.2);
+  color: #f43f5e;
+  border: 1px solid #e11d48;
+}

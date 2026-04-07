@@ -1,6 +1,6 @@
 """
-Cyventura Backend – FastAPI Application Entry Point
-====================================================
+Cyventura CTF Platform – FastAPI Application Entry Point
+=========================================================
 Run with:
     uvicorn app.main:app --reload --port 8000
 
@@ -9,6 +9,7 @@ ReDoc      : http://localhost:8000/redoc
 """
 import logging
 import os
+from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -16,37 +17,60 @@ from fastapi.staticfiles import StaticFiles
 
 from app.config import settings
 from app.database import connect_to_mongo, close_mongo_connection
-from app.routers import auth, users, posts
+
+# CTF routers – import directly from submodules (avoids circular import via __init__)
+from app.routes.auth import router as auth_router
+from app.routes.challenge import router as challenge_router
+from app.routes.submit import router as submit_router
+from app.routes.leaderboard import router as leaderboard_router
+from app.routes.admin import router as admin_router
 
 # ─── Logging ─────────────────────────────────────────────────────────────────
 
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s  %(levelname)-8s  %(name)s – %(message)s",
+    format="%(asctime)s  %(levelname)-8s  %(name)s - %(message)s",
     datefmt="%Y-%m-%d %H:%M:%S",
 )
 logger = logging.getLogger(__name__)
 
+# ─── Lifespan (replaces deprecated @app.on_event) ────────────────────────────
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup
+    logger.info("Starting Cyventura CTF API v%s ...", settings.APP_VERSION)
+    await connect_to_mongo()
+    yield
+    # Shutdown
+    await close_mongo_connection()
+
 # ─── App factory ─────────────────────────────────────────────────────────────
 
 app = FastAPI(
-    title=settings.APP_NAME,
+    title="Cyventura CTF Platform API",
     version=settings.APP_VERSION,
     description=(
-        "Production-ready REST API for the **Cyventura** college club website.\n\n"
-        "### Features\n"
-        "- 🔐 JWT authentication (register / login)\n"
-        "- 👤 User profile management\n"
-        "- 📢 Post creation with likes & comments\n"
-        "- 🍃 MongoDB Atlas via Motor async driver\n"
+        "Weekly CTF Challenge Platform REST API.\n\n"
+        "### Roles\n"
+        "- User - register, view challenges, submit flags, see leaderboard\n"
+        "- Admin - create/manage challenges, upload files, view all submissions\n\n"
+        "### Security\n"
+        "- JWT Bearer authentication\n"
+        "- bcrypt password hashing\n"
+        "- SHA-256 flag hashing with app-level salt\n"
+        "- Rate-limited flag submissions (5 per 10 min)\n"
+        "- Duplicate-solve prevention\n"
     ),
     docs_url="/docs",
     redoc_url="/redoc",
     openapi_url="/openapi.json",
+    lifespan=lifespan,
 )
 
-# ─── Static Files ────────────────────────────────────────────────────────────
+# ─── Static / Upload directories ─────────────────────────────────────────────
 
+os.makedirs("uploads/challenges", exist_ok=True)
 os.makedirs("uploads/profiles", exist_ok=True)
 app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
 
@@ -60,25 +84,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ─── Startup / Shutdown ──────────────────────────────────────────────────────
-
-@app.on_event("startup")
-async def startup() -> None:
-    logger.info("🚀  Starting %s v%s …", settings.APP_NAME, settings.APP_VERSION)
-    await connect_to_mongo()
-
-
-@app.on_event("shutdown")
-async def shutdown() -> None:
-    await close_mongo_connection()
-
 # ─── Routers ─────────────────────────────────────────────────────────────────
 
-app.include_router(auth.router)
-app.include_router(users.router)
-app.include_router(posts.router)
+app.include_router(auth_router)
+app.include_router(challenge_router)
+app.include_router(submit_router)
+app.include_router(leaderboard_router)
+app.include_router(admin_router)
 
-# ─── Health check ────────────────────────────────────────────────────────────
+# ─── Health checks ───────────────────────────────────────────────────────────
 
 @app.get("/", tags=["Health"], summary="Root health check")
 async def root():

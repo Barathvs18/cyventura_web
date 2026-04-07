@@ -1,0 +1,170 @@
+.admin-sidebar {
+    width: 280px;
+    background: rgba(5, 5, 5, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    z-index: 1000;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+.sidebar-brand {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    margin-bottom: 40px;
+    padding: 0 10px;
+}
+
+.sidebar-logo {
+    width: 50px;
+    height: auto;
+}
+
+.sidebar-text-logo {
+    width: 130px;
+    height: auto;
+    opacity: 0.9;
+    margin-left: 10px;
+}
+
+.sidebar-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(245, 9, 9, 0.1);
+    border: 1px solid rgba(245, 9, 9, 0.3);
+    color: #f50909;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-family: 'Unica One', sans-serif;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    margin-bottom: 40px;
+    width: fit-content;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 1;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #a0a0a0;
+    font-family: 'Unica One', sans-serif;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s ease, background 0.3s ease;
+    position: relative;
+    padding: 14px 18px;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.sidebar-link:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.sidebar-link.active {
+    color: #ffffff;
+    background: rgba(245, 9, 9, 0.05);
+}
+
+.sidebar-link.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 25%;
+    width: 2px;
+    height: 50%;
+    background: #f50909; 
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(245, 9, 9, 0.5);
+}
+
+.sidebar-icon {
+    transition: opacity 0.3s ease, color 0.3s ease;
+    color: inherit;
+}
+
+.sidebar-link.active .sidebar-icon,
+.sidebar-link:hover .sidebar-icon {
+    color: #f50909;         
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 25px;
+}
+
+.sidebar-logout {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 18px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: #f50909;
+    font-family: 'Unica One', sans-serif;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sidebar-logout:hover {
+    background: rgba(245, 9, 9, 0.1);
+    border-color: rgba(245, 9, 9, 0.3);
+    box-shadow: 0 0 15px rgba(245, 9, 9, 0.15);
+    color: #fff;
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+    .admin-sidebar {
+        width: 80px;
+        padding: 30px 10px;
+    }
+    
+    .sidebar-text-logo,
+    .sidebar-badge span,
+    .sidebar-link span,
+    .sidebar-logout span {
+        display: none;
+    }
+    
+    .sidebar-nav, 
+    .sidebar-brand,
+    .sidebar-logout {
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .sidebar-link::after {
+        left: 0;
+        width: 4px;
+    }
+}

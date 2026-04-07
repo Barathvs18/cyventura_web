@@ -1,0 +1,231 @@
+.ctf-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  height: 64px;
+  background: rgba(5, 5, 5, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(236, 234, 234, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.ctf-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.ctf-nav-logo {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #ff1a1a;
+  font-family: 'Unica One', sans-serif;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(255, 26, 26, 0.4);
+}
+
+.ctf-nav-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  letter-spacing: 1px;
+}
+
+.ctf-nav-links {
+  display: flex;
+  gap: 5px;
+}
+
+.ctf-nav-link {
+  color: #94a3b8;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-family: 'Unica One', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.ctf-nav-link:hover {
+  background: rgba(255, 26, 26, 0.1);
+  color: #ff1a1a;
+}
+
+.ctf-nav-link.active {
+  background: rgba(255, 26, 26, 0.15);
+  color: #ff1a1a;
+  font-weight: 600;
+  text-shadow: 0 0 8px rgba(255, 26, 26, 0.3);
+}
+
+.ctf-nav-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ctf-nav-username {
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.ctf-nav-score {
+  background: rgba(255, 26, 26, 0.15);
+  color: #ff1a1a;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  border: 1px solid rgba(255, 26, 26, 0.3);
+}
+
+.ctf-nav-role {
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ctf-nav-role.user {
+  background: rgba(255, 26, 26, 0.1);
+  color: #ff1a1a;
+  border: 1px solid rgba(255, 26, 26, 0.3);
+}
+
+.ctf-nav-role.admin {
+  background: rgba(255, 26, 26, 0.25);
+  color: #ff1a1a;
+  border: 1px solid #ff1a1a;
+  box-shadow: 0 0 10px rgba(255, 26, 26, 0.2);
+}
+
+.ctf-logout-btn {
+  display: none; /* Replaced by the profile dropdown implementation */
+}
+
+/* --- Profile Dropdown CSS --- */
+.profile-dropdown-container {
+  position: relative;
+}
+
+.profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 26, 26, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 26, 26, 0.3);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-family: 'Unica One', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.profile-btn:hover {
+  background: rgba(255, 26, 26, 0.2);
+  border-color: #ff1a1a;
+  box-shadow: 0 0 10px rgba(255, 26, 26, 0.3);
+}
+
+.profile-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 15px);
+  right: 0;
+  width: 240px;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 26, 26, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 26, 26, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: fadeDown 0.2s ease;
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-header {
+  padding: 15px;
+  border-bottom: 1px solid rgba(255, 26, 26, 0.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-username {
+  font-family: 'Unica One', sans-serif;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.dropdown-item {
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  transition: all 0.2s;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.stats-item {
+  justify-content: space-between;
+  padding: 15px;
+  cursor: default;
+}
+
+.stats-item:hover {
+  background: transparent;
+}
+
+.stats-label {
+  color: #94a3b8;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.logout-item {
+  color: #ff1a1a;
+  font-family: 'Unica One', sans-serif;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.logout-item:hover {
+  background: rgba(255, 26, 26, 0.15);
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: rgba(255, 26, 26, 0.15);
+  width: 100%;
+}
+
+.ctf-logout-btn:hover {
+  background: rgba(255, 26, 26, 0.15);
+  border-color: #ff1a1a;
+  box-shadow: 0 0 10px rgba(255, 26, 26, 0.3);
+}
