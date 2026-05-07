@@ -20,25 +20,17 @@ const Register = () => {
     setLoading(true);
 
     try {
-      // Step 1: Register the account
       await register(username, email, password);
-
-      setSuccess('Account created! Logging you in...');
-
-      // Step 2: Auto-login immediately after registration
-      const userData = await login(email, password);
-
-      // Step 3: Redirect based on role
-      if (userData?.role === 'admin') {
-        navigate('/admin/dashboard');
-      } else {
-        navigate('/dashboard');
-      }
+      setSuccess(`Account created successfully for ${username}!`);
+      
+      // Clear form
+      setUsername('');
+      setEmail('');
+      setPassword('');
 
     } catch (err) {
       const detail = err.response?.data?.detail;
       if (Array.isArray(detail)) {
-        // Pydantic validation error array
         setError(detail.map(d => d.msg).join(', '));
       } else {
         setError(detail || 'Registration failed. Please try again.');
@@ -51,7 +43,7 @@ const Register = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h2>Create Account</h2>
+        <h2>Register New User</h2>
 
         {error && <div className="error-msg">{error}</div>}
         {success && <div className="success-msg">{success}</div>}
@@ -97,12 +89,12 @@ const Register = () => {
           </div>
 
           <button type="submit" className="auth-btn" disabled={loading}>
-            {loading ? 'Creating Account...' : 'Sign Up'}
+            {loading ? 'Creating Account...' : 'Create User'}
           </button>
         </form>
 
-        <div className="auth-footer">
-          Already have an account? <Link to="/login">Log in</Link>
+        <div className="auth-footer" style={{marginTop: '20px'}}>
+           <Link to="/admin/dashboard" style={{color: '#64748b'}}>← Back to Dashboard</Link>
         </div>
       </div>
     </div>

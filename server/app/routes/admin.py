@@ -1,11 +1,13 @@
 """
 Admin routes (admin-only access):
-  POST /admin/challenge           – create a new challenge
-  POST /admin/upload              – upload a challenge file
-  PUT  /admin/challenge/{id}/activate
-  PUT  /admin/challenge/{id}/deactivate
-  GET  /admin/submissions         – list all flag submissions
-  GET  /admin/challenges          – list all challenges
+  POST   /admin/challenge              – create a new challenge
+  POST   /admin/upload                 – upload a challenge file
+  PUT    /admin/challenge/{id}/activate
+  PUT    /admin/challenge/{id}/deactivate
+  GET    /admin/submissions            – list all flag submissions
+  GET    /admin/challenges             – list all challenges
+  GET    /admin/users                  – list all registered users
+  DELETE /admin/user/{id}              – remove a user by ID
 """
 import os
 import shutil
@@ -15,9 +17,10 @@ from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile, s
 from motor.motor_asyncio import AsyncIOMotorDatabase
 
 from app.database import get_database
+from app.schemas.auth import RegisterRequest, UserOut
 from app.schemas.challenge import ChallengeCreateRequest, ChallengeOut
 from app.schemas.submission import SubmissionOut
-from app.services import challenge_service, submission_service
+from app.services import auth_service, challenge_service, submission_service
 from app.utils.dependencies import require_admin, valid_object_id
 
 router = APIRouter(prefix="/admin", tags=["Admin"])
@@ -128,3 +131,59 @@ async def delete_challenge(
 ):
     """Delete a challenge permanently."""
     await challenge_service.delete_challenge(id, db)
+
+
+# ── Register User (Admin Only) ────────────────────────────────────────────────
+
+@router.post("/register", response_model=UserOut, status_code=201)
+async def register_user(
+    payload: RegisterRequest,
+    _: dict = Depends(require_admin),
+    db: AsyncIOMotorDatabase = Depends(get_database),
+):
+    """
+    Register a new user account (Admin only).
+    """
+    return await auth_service.register_user(payload, db)
+
+
+# ── List all users ────────────────────────────────────────────────────────────
+
+@router.get("/users", response_model=list[UserOut])
+async def list_all_users(
+    _: dict = Depends(require_admin),
+    db: AsyncIOMotorDatabase = Depends(get_database),
+):
+    """Return all registered users (admin only)."""
+    users = await db["users"].find().to_list(length=1000)
+    result = []
+    for u in users:
+        result.append(UserOut(
+            id=str(u["_id"]),
+            username=u.get("username", ""),
+            email=u.get("email", ""),
+            role=u.get("role", "user"),
+            score=u.get("score", 0),
+            solved_challenges=[str(s) for s in u.get("solved_challenges", [])],
+        ))
+    return result
+
+
+# ── Delete a user ─────────────────────────────────────────────────────────────
+
+@router.delete("/user/{id}", status_code=204)
+async def delete_user(
+    id: str = Depends(valid_object_id),
+    current_admin: dict = Depends(require_admin),
+    db: AsyncIOMotorDatabase = Depends(get_database),
+):
+    """Permanently delete a user account (admin only). Cannot delete yourself."""
+    from bson import ObjectId
+    if str(current_admin.get("_id", "")) == id:
+        from fastapi import HTTPException
+        raise HTTPException(status_code=400, detail="You cannot delete your own admin account.")
+    result = await db["users"].delete_one({"_id": ObjectId(id)})
+    if result.deleted_count == 0:
+        from fastapi import HTTPException
+        raise HTTPException(status_code=404, detail="User not found.")
+

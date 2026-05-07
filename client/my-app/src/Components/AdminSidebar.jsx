@@ -7,7 +7,9 @@ import {
   ListChecks, 
   LogOut, 
   Shield,
-  Home
+  Home,
+  UserPlus,
+  Users
 } from 'lucide-react';
 import './AdminSidebar.css';
 
@@ -58,6 +60,22 @@ const AdminSidebar = () => {
         >
           <ListChecks size={20} className="sidebar-icon" />
           <span>Submissions</span>
+        </NavLink>
+
+        <NavLink 
+          to="/admin/users" 
+          className={({ isActive }) => isActive ? "sidebar-link active" : "sidebar-link"}
+        >
+          <Users size={20} className="sidebar-icon" />
+          <span>Registered Users</span>
+        </NavLink>
+
+        <NavLink 
+          to="/admin/register" 
+          className={({ isActive }) => isActive ? "sidebar-link active" : "sidebar-link"}
+        >
+          <UserPlus size={20} className="sidebar-icon" />
+          <span>Register User</span>
         </NavLink>
 
         <NavLink 

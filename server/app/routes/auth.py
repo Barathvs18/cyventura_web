@@ -12,14 +12,6 @@ from app.utils.dependencies import get_current_user
 router = APIRouter(prefix="/auth", tags=["Auth"])
 
 
-@router.post("/register", response_model=UserOut, status_code=201)
-async def register(
-    payload: RegisterRequest,
-    db: AsyncIOMotorDatabase = Depends(get_database),
-):
-    """Register a new user account."""
-    return await auth_service.register_user(payload, db)
-
 
 @router.post("/login", response_model=TokenResponse)
 async def login(

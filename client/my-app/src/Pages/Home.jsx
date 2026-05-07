@@ -59,7 +59,6 @@ export default function Home() {
                     <Members />
 
                 </div>
-                {/* <div id="contact"><Contact /></div> */}
                 <Footer />
             </main>
         </>
